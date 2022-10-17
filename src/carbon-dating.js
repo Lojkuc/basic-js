@@ -20,7 +20,7 @@ const HALF_LIFE_PERIOD = 5730;
 function dateSample(str) {
   if(typeof str != "string") return false
   let res = Math.ceil(Math.log(MODERN_ACTIVITY/+str)/(0.6930/HALF_LIFE_PERIOD))
-  return typeof res != "number"?false:res
+  return res<0?false:isNaN(res)?false:isFinite(res/10)?res:false
 }
 
 module.exports = {
