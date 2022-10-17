@@ -20,22 +20,26 @@ const { NotImplementedError } = require('../extensions/index.js');
   additionSeparator:"|"
 };
  function repeater(str, options) {
-  throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+	const obj = new Set( Object.keys(options) )
+	const repeatTimes = obj.has('repeatTimes')?options.repeatTimes : 1
+	const separator = obj.has('separator')?options.separator : '+'
+	const addition = obj.has('addition')?options.addition : ''
+	const addRepeatTimes = obj.has('additionRepeatTimes')?options.additionRepeatTimes : 1
+	const additionSeparator = obj.has('additionSeparator')?options.additionSeparator : '|'
 	let arr = []
 	let addArr = []
 	let countRepeat = 0
 	let addCountRepeat = 0
-	while(countRepeat != options.repeatTimes){
+	while(countRepeat != repeatTimes){
 		countRepeat++
 		arr.push(str)
 	}
-	while(addCountRepeat != options.additionRepeatTimes){
+	while(addCountRepeat != addRepeatTimes){
 			addCountRepeat++
-			addArr.push(options.addition)
+			addArr.push(addition)
 		}
-		addArr = addArr.join(options.additionSeparator)
-	return arr.map(el=>el+addArr).join(options.separator)
+		addArr = addArr.join(additionSeparator)
+	return arr.map(el=>el+addArr).join(separator)
   }
 
 module.exports = {
