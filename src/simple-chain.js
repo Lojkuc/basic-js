@@ -10,7 +10,7 @@ const chainMaker = {
     return this.chain.replace(/[\D]/g, "").length
   },
   addLink(value) {
-    this.chain += ("( "+`${value}`+" )~~")
+    this.chains = this.chains.concat(value)
     return this
   },
   removeLink(pos) {

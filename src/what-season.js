@@ -18,7 +18,8 @@ const season = {
   autumn:[8,9,10],
 }
 function getSeason(date) {
-  if(typeof date.getMonth() != "number") return true
+  if(!date) return 'Unable to determine the time of year!'
+  if(date.getDate != Date.prototype.getDate) throw new Error('Invalid date!')
   for(let el of Object.entries(season)){
     if(el[1].includes(date.getMonth())){
       return el[0]
